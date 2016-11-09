@@ -31,7 +31,7 @@ public class Sorter {
 							sorted_linear.add(0, tmp);
 							System.out.println(tmp);
 							break;
-						} else {
+						} else if (tmp >= (int)sorted_linear.get(j-1)) {
 							sorted_linear.add(j, tmp);
 							System.out.println(tmp);
 							break;
