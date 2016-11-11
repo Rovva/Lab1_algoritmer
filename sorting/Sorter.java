@@ -18,6 +18,7 @@ public class Sorter {
 	}
 	
 	void insertionSort() {
+		long startTime = System.nanoTime();
 		int tmp;		// A temporary variable for the number we pick from the unsorted list
 		for(int i = 0; i < unsorted.size(); i++) {
 			tmp = (int) unsorted.get(i);	//Grabbing a number from unsorted list
@@ -50,12 +51,15 @@ public class Sorter {
 			}
 		}
 		System.out.println(sorted_linear);
+		System.out.println(((System.nanoTime() - startTime)/1000000.0) + " Seconds");
 	}
 	
 
 	
 	void bInsertionSort() {
 	//For bInsertionSort we have lower and upperbounds to determine the split
+		
+		long startTime = System.nanoTime();
 		int tmp, upperbound, lowerbound;
 		
 		for(int i = 0; i < unsorted.size(); i++) {
@@ -122,6 +126,7 @@ public class Sorter {
 			}
 		}
 		System.out.println(sorted_binary);
+		System.out.println(((System.nanoTime() - startTime)/1000000.0) + " Seconds");
 	}
 
 }
