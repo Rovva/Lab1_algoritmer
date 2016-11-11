@@ -14,10 +14,10 @@ public class NumberGenerator {
 		showNumbers();
 	}
 	
-	void GenerateNumbers() {
+	void GenerateNumbers() {  // Creates a list of random numbers from 0-99
 		int randomNumber;
 		Random randomGenerator = new Random();
-		for(int i = 0; i < this.num; i++) {
+		for(int i = 0; i < this.num; i++) {				
 			randomNumber = randomGenerator.nextInt(100);
 			unsorted.add(randomNumber);
 		}
