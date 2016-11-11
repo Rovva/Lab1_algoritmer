@@ -51,7 +51,7 @@ public class Sorter {
 			}
 		}
 		System.out.println(sorted_linear);
-		System.out.println(((System.nanoTime() - startTime)/1000000.0) + " Seconds");
+		System.out.println(((System.nanoTime() - startTime)/1000000000.0) + " Seconds");
 	}
 	
 
@@ -126,7 +126,7 @@ public class Sorter {
 			}
 		}
 		System.out.println(sorted_binary);
-		System.out.println(((System.nanoTime() - startTime)/1000000.0) + " Seconds");
+		System.out.println(((System.nanoTime() - startTime)/1000000000.0) + " Seconds");
 	}
 
 }
