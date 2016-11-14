@@ -51,15 +51,13 @@ public class Sorter {
 			}
 		}
 		System.out.println(sorted_linear);
-		System.out.println(((System.nanoTime() - startTime)/1000000000.0) + " Seconds");
+		System.out.println(((System.nanoTime() - startTime)/1000000.0) + " Miliseconds");
 	}
 	
 
 	
-	void bInsertionSort() {
+	void bInsertionSort(ArrayList firstHalf, ArrayList secondHalf) {
 	//For bInsertionSort we have lower and upperbounds to determine the split
-		
-		long startTime = System.nanoTime();
 		int tmp, upperbound, lowerbound;
 		
 		for(int i = 0; i < unsorted.size(); i++) {
@@ -125,8 +123,18 @@ public class Sorter {
 				
 			}
 		}
-		System.out.println(sorted_binary);
-		System.out.println(((System.nanoTime() - startTime)/1000000000.0) + " Seconds");
 	}
-
+	
+	public ArrayList mergesort(ArrayList data, int high, int low) {
+        int middle = (high+low)/2;
+        if (middle==low) {
+            ArrayList data2 = new ArrayList();
+            data2.set(0, data.get(middle));
+            return data2;
+        } else {
+            ArrayList firstHalfSorted = mergesort(data, low, middle);
+            ArrayList secondHalfSorted = mergesort(data, middle+1, high);
+            return (merge(firstHalfSorted, secondHalfSorted));
+        }
+	}	
 }
