@@ -1,6 +1,7 @@
 package sorting;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import sorting.NumberGenerator;
 
@@ -17,13 +18,13 @@ public class Sorter {
 		this.unsorted = num.unsorted;
 	}
 	
-	void insertionSort() {
-		long startTime = System.nanoTime();
+	public int[] insertionSort(int[] data) {
 		int tmp;		// A temporary variable for the number we pick from the unsorted list
-		for(int i = 0; i < unsorted.size(); i++) {
-			tmp = (int) unsorted.get(i);	//Grabbing a number from unsorted list
+		int[] dataSorted = new int[data.length];
+		for(int i = 0; i < data.length; i++) {
+			tmp = data[i];	//Grabbing a number from unsorted list
 			if(i == 0) {					//The sorted list is always empty at the beginning...
-				sorted_linear.add(tmp);		//...So just put in the first unsorted number.
+				dataSorted[0] = tmp;		//...So just put in the first unsorted number.
 			} else {
 				System.out.println(sorted_linear);
 				for(int j = sorted_linear.size() - 1; j >= 0; j--) {
@@ -50,8 +51,7 @@ public class Sorter {
 				}
 			}
 		}
-		System.out.println(sorted_linear);
-		System.out.println(((System.nanoTime() - startTime)/1000000.0) + " Miliseconds");
+		return dataSorted;
 	}
 	
 
@@ -125,24 +125,26 @@ public class Sorter {
 		}
 	}
 	
-	public int[] mergesort(int[] data, int high, int low) {
+	public int[] mergesort(int[] data, int high, int low, int k) {
         int middle = (high+low)/2;
-        if (high==low) {
+        if (data.length<=k) {
+        	insertionSort(data);
             int[] data2 = new int[1];
             data2[0] = data[middle];
             return data2;
         } else {
-            int[] firstHalfSorted = mergesort(data, low, middle);
-            int[] secondHalfSorted = mergesort(data, middle+1, high);
+            int[] firstHalfSorted = mergesort(data, low, middle, k);
+            int[] secondHalfSorted = mergesort(data, middle+1, high, k);
             return (merge(firstHalfSorted, secondHalfSorted));
         }
 	}	
 	
 	public int[] merge(int[] firstHalfSorted, int[] secondHalfSorted) {
-        int[] SortedArray = new int[firstHalfSorted.length+secondHalfSorted.length];
+        int[] SortedArray = new int[(firstHalfSorted.length+secondHalfSorted.length)];
         int m = 0;
         int n = 0;
         int count = 0;
+        System.out.println(SortedArray.length);
         while (m < firstHalfSorted.length && n < secondHalfSorted.length)
         {
             if (firstHalfSorted[m] > secondHalfSorted[n])
