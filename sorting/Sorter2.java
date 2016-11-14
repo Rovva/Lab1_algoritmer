@@ -5,16 +5,16 @@ import sorting.NumberGenerator;
 public class Sorter2 {
     
     //private int[] array;
-    //private int[] tempMergArr;
+    private int[] tempMergArr;
     //private int length;
     
     NumberGenerator num;
 	ArrayList sorted = new ArrayList();
 	ArrayList unsorted;		//Our unsorted list, created by NumberGenerator
+	ArrayList tempMerge;
 	
 	int length;
 	int k;
-	int length1;
     
     // Original
     public static void main(String a[]){
@@ -40,6 +40,7 @@ public class Sorter2 {
 		this.unsorted = num.unsorted;
         this.length = unsorted.size();
         this.k = k;
+        this.tempMergArr = new int [length];
         sort1(0, length - 1);
     }
     //Test2
@@ -48,6 +49,7 @@ public class Sorter2 {
 		this.unsorted = num.unsorted;
         this.length = unsorted.size();
         this.k = k;
+        this.tempMergArr = new int [length];
         sort2(0, length - 1);
     }
     
@@ -67,7 +69,7 @@ public class Sorter2 {
             }
             
             // Now merge both sides
-            mergeParts(lowerIndex, middle, higherIndex);
+            mergeSubArr(lowerIndex, middle, higherIndex);
         }
     }
  
@@ -88,33 +90,31 @@ public class Sorter2 {
             }
             
             // Now merge both sides
-            mergeParts(lowerIndex, middle, higherIndex);
+            mergeSubArr(lowerIndex, middle, higherIndex);
         }
     }
-    
-    private void mergeParts(int lowerIndex, int middle, int higherIndex) {
-    	
-    	
+    //mergeSubArr är klar att testa om inga fel kan ses.
+    private void mergeSubArr(int lowerIndex, int middle, int higherIndex) {
     	
         for (int i = lowerIndex; i <= higherIndex; i++) {
-            tempMergArr[i] = array[i];
+            tempMergArr[i] = (int)unsorted.get(i);
         }
         int i = lowerIndex;
         int j = middle + 1;
-        int k = lowerIndex;
+        int l = lowerIndex;
         while (i <= middle && j <= higherIndex) {
             if (tempMergArr[i] <= tempMergArr[j]) {
-                array[k] = tempMergArr[i];
+                sorted.add(l, tempMergArr[i]);
                 i++;
             } else {
-                array[k] = tempMergArr[j];
+                sorted.add(l, tempMergArr[j]);
                 j++;
             }
-            k++;
+            l++;
         }
         while (i <= middle) {
-            array[k] = tempMergArr[i];
-            k++;
+            sorted.add(l, tempMergArr[i]);
+            l++;
             i++;
         }
  
