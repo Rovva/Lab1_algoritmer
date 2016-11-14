@@ -18,7 +18,7 @@ public class NumberGenerator {
 		int randomNumber;
 		Random randomGenerator = new Random();
 		for(int i = 0; i < this.num; i++) {				
-			randomNumber = randomGenerator.nextInt(10000);
+			randomNumber = randomGenerator.nextInt(100);
 			unsorted.add(randomNumber);
 		}
 	}

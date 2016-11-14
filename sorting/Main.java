@@ -1,5 +1,7 @@
 package sorting;
 
+import java.util.Arrays;
+
 import sorting.NumberGenerator;
 import sorting.Sorter;
 
@@ -20,7 +22,10 @@ public class Main {
 		}
 		int high = num.unsorted.size() -1;
 		int low = 0;
-		System.out.println(sort.mergesort(numArray, high, low));
+		int[] complete = sort.mergesort(numArray, high, low);
+		for(int i = 0; i < complete.length; i++) {
+			System.out.println(complete[i]);
+		}
 	}
 
 }

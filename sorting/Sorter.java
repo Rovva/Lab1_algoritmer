@@ -127,7 +127,7 @@ public class Sorter {
 	
 	public int[] mergesort(int[] data, int high, int low) {
         int middle = (high+low)/2;
-        if (middle==low) {
+        if (high==low) {
             int[] data2 = new int[1];
             data2[0] = data[middle];
             return data2;
@@ -138,12 +138,12 @@ public class Sorter {
         }
 	}	
 	
-	public static int[] merge(int[] firstHalfSorted, int[] secondHalfSorted) {
+	public int[] merge(int[] firstHalfSorted, int[] secondHalfSorted) {
         int[] SortedArray = new int[firstHalfSorted.length+secondHalfSorted.length];
         int m = 0;
         int n = 0;
         int count = 0;
-        while (m < firstHalfSorted.length - 1 && n < secondHalfSorted.length - 1)
+        while (m < firstHalfSorted.length && n < secondHalfSorted.length)
         {
             if (firstHalfSorted[m] > secondHalfSorted[n])
             {
@@ -151,24 +151,23 @@ public class Sorter {
                 count++;
                 n++;
             }
-            else if (firstHalfSorted[m] < secondHalfSorted[n])
-            {
+            else {
                 SortedArray[count] = firstHalfSorted[m];
                 count++;
                 m++;
             }
         }
-        if (m != firstHalfSorted.length - 1)
+        if (m != firstHalfSorted.length)
         {
-            while(m < firstHalfSorted.length - 1){
+            while(m < firstHalfSorted.length){
                 SortedArray[count] = firstHalfSorted[m];
                 count++;
                 m++;
             }
         }
-        if (n != secondHalfSorted.length - 1)
+        if (n != secondHalfSorted.length)
         {
-            while(n < secondHalfSorted.length - 1){
+            while(n < secondHalfSorted.length){
                 SortedArray[count] = secondHalfSorted[n];
                 count++;
                 n++;
