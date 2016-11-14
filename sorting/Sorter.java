@@ -125,16 +125,55 @@ public class Sorter {
 		}
 	}
 	
-	public ArrayList mergesort(ArrayList data, int high, int low) {
+	public int[] mergesort(int[] data, int high, int low) {
         int middle = (high+low)/2;
         if (middle==low) {
-            ArrayList data2 = new ArrayList();
-            data2.set(0, data.get(middle));
+            int[] data2 = new int[1];
+            data2[0] = data[middle];
             return data2;
         } else {
-            ArrayList firstHalfSorted = mergesort(data, low, middle);
-            ArrayList secondHalfSorted = mergesort(data, middle+1, high);
+            int[] firstHalfSorted = mergesort(data, low, middle);
+            int[] secondHalfSorted = mergesort(data, middle+1, high);
             return (merge(firstHalfSorted, secondHalfSorted));
         }
 	}	
+	
+	public static int[] merge(int[] firstHalfSorted, int[] secondHalfSorted) {
+        int[] SortedArray = new int[firstHalfSorted.length+secondHalfSorted.length];
+        int m = 0;
+        int n = 0;
+        int count = 0;
+        while (m < firstHalfSorted.length - 1 && n < secondHalfSorted.length - 1)
+        {
+            if (firstHalfSorted[m] > secondHalfSorted[n])
+            {
+                SortedArray[count]=secondHalfSorted[n];
+                count++;
+                n++;
+            }
+            else if (firstHalfSorted[m] < secondHalfSorted[n])
+            {
+                SortedArray[count] = firstHalfSorted[m];
+                count++;
+                m++;
+            }
+        }
+        if (m != firstHalfSorted.length - 1)
+        {
+            while(m < firstHalfSorted.length - 1){
+                SortedArray[count] = firstHalfSorted[m];
+                count++;
+                m++;
+            }
+        }
+        if (n != secondHalfSorted.length - 1)
+        {
+            while(n < secondHalfSorted.length - 1){
+                SortedArray[count] = secondHalfSorted[n];
+                count++;
+                n++;
+            }
+        }
+        return SortedArray;
+    }
 }

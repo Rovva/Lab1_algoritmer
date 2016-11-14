@@ -13,7 +13,14 @@ public class Main {
 		NumberGenerator num = new NumberGenerator(Integer.parseInt(args[0]));
 		Sorter sort = new Sorter(num);
 		//sort.insertionSort();
-		sort.bInsertionSort();
+		//sort.bInsertionSort();
+		int[] numArray = new int[num.unsorted.size()];
+		for(int i = 0; i < num.unsorted.size(); i++) {
+			numArray[i] = (int) num.unsorted.get(i);
+		}
+		int high = num.unsorted.size() -1;
+		int low = 0;
+		System.out.println(sort.mergesort(numArray, high, low));
 	}
 
 }
