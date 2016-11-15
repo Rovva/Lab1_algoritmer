@@ -7,7 +7,7 @@ public class Sorter2 {
     private int[] tempMergArr;
     
     NumberGenerator num;
-	ArrayList sorted = new ArrayList();
+	ArrayList sorted;
 	ArrayList unsorted;		//Our unsorted list, created by NumberGenerator
 	ArrayList tempMerge;
 	
@@ -20,6 +20,7 @@ public class Sorter2 {
 		this.unsorted = num.unsorted;
         this.length = unsorted.size();
         this.k = k;
+        this.sorted = new ArrayList(length);
         this.tempMergArr = new int [length];
         sort1(0, length - 1);
 		System.out.println(sorted);
@@ -36,19 +37,20 @@ public class Sorter2 {
     
     private void sort1(int lowerIndex, int higherIndex) {
     	int t =(higherIndex - lowerIndex);
-    	
+    	int middle = 0;
+    	System.out.println("t: " + t + " k: " + k);
     	if(lowerIndex < higherIndex && t > k) {
     		
-            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
+            middle = lowerIndex + (higherIndex - lowerIndex) / 2;
             // Below step sorts the left side of the array
             sort1(lowerIndex, middle);
             // Below step sorts the right side of the array
             sort1(middle + 1, higherIndex);
-            
+            System.out.println(higherIndex - lowerIndex + " k: " + k);
             if(higherIndex - lowerIndex <= k){
             	insertionSort(lowerIndex, higherIndex);
             }
-            
+
             // Now merge both sides
             mergeSubArr(lowerIndex, middle, higherIndex);
         }
@@ -85,16 +87,16 @@ public class Sorter2 {
         int l = lowerIndex;
         while (i <= middle && j <= higherIndex) {
             if (tempMergArr[i] <= tempMergArr[j]) {
-                sorted.add(l, tempMergArr[i]);
+                sorted.set(l, tempMergArr[i]);
                 i++;
             } else {
-                sorted.add(l, tempMergArr[j]);
+                sorted.set(l, tempMergArr[j]);
                 j++;
             }
             l++;
         }
         while (i <= middle) {
-            sorted.add(l, tempMergArr[i]);
+            sorted.set(l, tempMergArr[i]);
             l++;
             i++;
         }
@@ -141,6 +143,8 @@ public class Sorter2 {
 			unsorted.set(i, tmpsorted.get(j));
 			j++;
 		}
+		System.out.println("lol");
+		System.out.println(tmpsorted);
 	}
     
     
