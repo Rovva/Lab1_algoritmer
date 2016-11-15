@@ -22,6 +22,7 @@ public class Sorter2 {
         this.k = k;
         this.tempMergArr = new int [length];
         sort1(0, length - 1);
+		System.out.println(sorted);
     }
     //binsertionsort
     public void sortBinsertion(NumberGenerator num, int k) {
@@ -102,42 +103,44 @@ public class Sorter2 {
     
     
     private void insertionSort(int lowerIndex, int higherIndex) {
-    	
-    	int i =
-    	
+    	ArrayList tmpsorted = new ArrayList();
 		int tmp;		// A temporary variable for the number we pick from the unsorted list
-		for(int i = 0; i < unsorted.size(); i++) {
+		for(int i = lowerIndex; i <= higherIndex; i++) {
 			tmp = (int) unsorted.get(i);	//Grabbing a number from unsorted list
 			if(i == 0) {					//The sorted list is always empty at the beginning...
-				sorted_linear.add(tmp);		//...So just put in the first unsorted number.
+				tmpsorted.add(tmp);		//...So just put in the first unsorted number.
 			} else {
-				System.out.println(sorted_linear);
-				for(int j = sorted_linear.size() - 1; j >= 0; j--) {
+				System.out.println(tmpsorted);
+				for(int j = tmpsorted.size() - 1; j >= 0; j--) {
 				//Check through the sorted list
 					
-					if(tmp < (int)sorted_linear.get(j)) {//Is the number lower than it, in the sorted list?
+					if(tmp < (int)tmpsorted.get(j)) {//Is the number lower than it, in the sorted list?
 						if(j-1 < 0) {					 //Are we at the bottom of the list?
-							sorted_linear.add(0, tmp);	 //Put the number at the bottom of the list
+							tmpsorted.add(0, tmp);	 //Put the number at the bottom of the list
 							System.out.println(tmp);
 							break;
-						} else if (tmp >= (int)sorted_linear.get(j-1)) {
+						} else if (tmp >= (int)tmpsorted.get(j-1)) {
 						//Ok we are less than j but what about the number behind j?
 							
-							sorted_linear.add(j, tmp); 
+							tmpsorted.add(j, tmp); 
 							//We are higher or equal and can add it in our current position
 							
 							System.out.println(tmp);
 							break;
 						}
 					} else {					//tmp is higher than j
-						sorted_linear.add(tmp); //We add tmp to the list.
+						tmpsorted.add(tmp); //We add tmp to the list.
 						break;
 					}
 				}
 			}
 		}
-		System.out.println(sorted_linear);
-		System.out.println(((System.nanoTime() - startTime)/1000000.0) + " Miliseconds");
+		// Mata in tmp listan till unsorted.
+		int j = 0;
+		for(int i = lowerIndex; i <= higherIndex; i++) {
+			unsorted.set(i, tmpsorted.get(j));
+			j++;
+		}
 	}
     
     
