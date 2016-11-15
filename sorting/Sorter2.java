@@ -23,7 +23,7 @@ public class Sorter2 {
         this.sorted = new ArrayList(length);
         this.tempMergArr = new int [length];
         sort1(0, length - 1);
-		System.out.println(sorted);
+        System.out.println(unsorted);
     }
     //binsertionsort
     public void sortBinsertion(NumberGenerator num, int k) {
@@ -36,24 +36,26 @@ public class Sorter2 {
     }
     
     private void sort1(int lowerIndex, int higherIndex) {
-    	int t =(higherIndex - lowerIndex);
-    	int middle = 0;
+    	int t =(higherIndex - lowerIndex) + 1;
     	System.out.println("t: " + t + " k: " + k);
     	if(lowerIndex < higherIndex && t > k) {
     		
-            middle = lowerIndex + (higherIndex - lowerIndex) / 2;
+            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
             // Below step sorts the left side of the array
             sort1(lowerIndex, middle);
             // Below step sorts the right side of the array
             sort1(middle + 1, higherIndex);
-            System.out.println(higherIndex - lowerIndex + " k: " + k);
-            if(higherIndex - lowerIndex <= k){
-            	insertionSort(lowerIndex, higherIndex);
-            }
+            System.out.println((t) + " k: " + k);
+            System.out.println("Higher index: " + higherIndex + " LowerIndex: " + lowerIndex + " Middle: " + middle);
 
             // Now merge both sides
             mergeSubArr(lowerIndex, middle, higherIndex);
-        }
+            
+        } else {
+        	
+    		insertionSort(lowerIndex, higherIndex);
+    		
+    	}
     }
  
     private void sort2(int lowerIndex, int higherIndex) {
@@ -78,28 +80,43 @@ public class Sorter2 {
     }
     //mergeSubArr är klar att testa om inga fel kan ses.
     private void mergeSubArr(int lowerIndex, int middle, int higherIndex) {
+    	ArrayList tempMergArr = new ArrayList();
+    	
+    	
+    	for (int i = 0; i < lowerIndex; i++){
+    		tempMergArr.add(i, 0);
+    	}    	
     	
         for (int i = lowerIndex; i <= higherIndex; i++) {
-            tempMergArr[i] = (int)unsorted.get(i);
+        	
+            tempMergArr.add(i, (int)unsorted.get(i));
+            System.out.println((int)unsorted.get(i));
         }
+        
         int i = lowerIndex;
         int j = middle + 1;
         int l = lowerIndex;
         while (i <= middle && j <= higherIndex) {
-            if (tempMergArr[i] <= tempMergArr[j]) {
-                sorted.set(l, tempMergArr[i]);
+            if ((int)tempMergArr.get(i) <= (int)tempMergArr.get(j)) {
+                unsorted.set(l, tempMergArr.get(i));
                 i++;
             } else {
-                sorted.set(l, tempMergArr[j]);
+                unsorted.set(l, tempMergArr.get(j));
                 j++;
             }
             l++;
         }
         while (i <= middle) {
-            sorted.set(l, tempMergArr[i]);
+            unsorted.set(l, tempMergArr.get(i));
             l++;
             i++;
         }
+        while (j <= middle) {
+        	unsorted.set(l, tempMergArr.get(j));
+        	l++;
+        	i++;
+        }
+        System.out.println(unsorted);
  
     }
     
@@ -109,7 +126,7 @@ public class Sorter2 {
 		int tmp;		// A temporary variable for the number we pick from the unsorted list
 		for(int i = lowerIndex; i <= higherIndex; i++) {
 			tmp = (int) unsorted.get(i);	//Grabbing a number from unsorted list
-			if(i == 0) {					//The sorted list is always empty at the beginning...
+			if(tmpsorted.isEmpty()) {		//The sorted list is always empty at the beginning...
 				tmpsorted.add(tmp);		//...So just put in the first unsorted number.
 			} else {
 				System.out.println(tmpsorted);
