@@ -4,9 +4,7 @@ import sorting.NumberGenerator;
 
 public class Sorter2 {
     
-    //private int[] array;
     private int[] tempMergArr;
-    //private int length;
     
     NumberGenerator num;
 	ArrayList sorted = new ArrayList();
@@ -15,26 +13,8 @@ public class Sorter2 {
 	
 	int length;
 	int k;
-    
-    // Original
-    public static void main(String a[]){
-         
-        int[] inputArr = {45,23,11,89,77,98,4,28,65,43};
-        Sorter2 mms = new Sorter2();
-        mms.sort(inputArr);
-        for(int i:inputArr){
-            System.out.print(i);
-            System.out.print(" ");
-        }
-    }
-    //Original 
-    public void sort(Arraylist inputArr) {
-        this.array = inputArr;
-        this.length = inputArr.length;
-        this.tempMergArr = new int[length];
-        doMergeSort(0, length - 1);
-    }
-    //test1
+   
+    //insertionsort
     public void sortInsertion(NumberGenerator num, int k) {
     	this.num = num;
 		this.unsorted = num.unsorted;
@@ -43,7 +23,7 @@ public class Sorter2 {
         this.tempMergArr = new int [length];
         sort1(0, length - 1);
     }
-    //Test2
+    //binsertionsort
     public void sortBinsertion(NumberGenerator num, int k) {
     	this.num = num;
 		this.unsorted = num.unsorted;
