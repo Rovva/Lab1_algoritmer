@@ -12,12 +12,47 @@ public class Main {
 	Sorter2 sort;
 	
 	public static void main(String[] args) {
-		int n = 5000;
+		for(int i = 8; i <= 20; i = i + 2) {
+			startSort(5000, i);
+			startSort(5000, i);
+			System.out.println("---");
+			startSort(10000, i);
+			startSort(10000, i);
+			System.out.println("---");
+			startSort(15000, i);
+			startSort(15000, i);
+			System.out.println("---");
+			startSort(20000, i);
+			startSort(20000, i);
+			System.out.println("---");
+			startSort(25000, i);
+			startSort(25000, i);
+			System.out.println("---");
+			startSort(30000, i);
+			startSort(30000, i);
+			System.out.println("---");
+			startSort(35000, i);
+			startSort(35000, i);
+			System.out.println("---");
+			startSort(40000, i);
+			startSort(40000, i);
+			System.out.println("---");
+			startSort(45000, i);
+			startSort(45000, i);
+			System.out.println("---");
+			startSort(50000, i);
+			startSort(50000, i);
+			System.out.println("---");
+		}
+	}
+	
+	public static void startSort(int numbers, int kvalue) {
+		int n = numbers;
+		int k = kvalue;
 		long time;
-		NumberGenerator num = new NumberGenerator(100000);
+		NumberGenerator num = new NumberGenerator(n);
 		Sorter2 sort = new Sorter2();
 		
-		int k = 50;
 		
 		long startTime = System.nanoTime();
 		sort.sortInsertion(num, k);
