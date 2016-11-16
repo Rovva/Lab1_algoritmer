@@ -7,6 +7,7 @@ public class NumberGenerator {
 
 	int num;
 	ArrayList unsorted = new ArrayList();
+	ArrayList unsorted2 = new ArrayList();
 	
 	public NumberGenerator(int n) {
 		num = n;
@@ -20,11 +21,12 @@ public class NumberGenerator {
 		for(int i = 0; i < this.num; i++) {				
 			randomNumber = randomGenerator.nextInt(num);
 			unsorted.add(randomNumber);
+			unsorted2.add(randomNumber);
 		}
 	}
 	
 	void showNumbers() {
-		System.out.println(unsorted);
+		//System.out.println("Orginal: " + unsorted);
 	}
 	
 }

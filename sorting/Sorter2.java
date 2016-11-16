@@ -9,6 +9,7 @@ public class Sorter2 {
     NumberGenerator num;
 	ArrayList sorted;
 	ArrayList unsorted;		//Our unsorted list, created by NumberGenerator
+	ArrayList unsorted2;
 	ArrayList tempMerge;
 	
 	int length;
@@ -24,18 +25,19 @@ public class Sorter2 {
         this.sorted = new ArrayList(length);
         this.tempMergArr = new int [length];
         sort1(0, length - 1);
-        System.out.println(unsorted);
+        //System.out.println(unsorted);
         
     }
     //binsertionsort
     public void sortBinsertion(NumberGenerator num, int k) {
     	this.num = num;
-		this.unsorted = num.unsorted;
+		this.unsorted = num.unsorted2;
         this.length = unsorted.size();
         this.k = k;
         this.tempMergArr = new int [length];
+        //System.out.println("Orginal: " + this.unsorted);
         sort2(0, length - 1);
-        System.out.println(unsorted);
+        //System.out.println(unsorted);
     }
     
     private void sort1(int lowerIndex, int higherIndex) {
@@ -89,7 +91,6 @@ public class Sorter2 {
     	}    	
     	
         for (int i = lowerIndex; i <= higherIndex; i++) {
-        	
             tempMergArr.add(i, (int)unsorted.get(i));
         }
         
