@@ -14,13 +14,17 @@ public class Main {
 	public static void main(String[] args) {
 		NumberGenerator num = new NumberGenerator(Integer.parseInt(args[0]));
 		Sorter2 sort = new Sorter2();
-		//sort.insertionSort();
-		//sort.bInsertionSort();
-		/*int high = num.unsorted.size() -1;
-		int low = 0;
-		int k = 2;
-		int[] complete = sort.mergesort(numArray, high, low, k);*/
-		sort.sortInsertion(num, 2);
+		
+		int k = 50;
+		
+		long startTime = System.nanoTime();
+		sort.sortInsertion(num, k);
+		System.out.println("Insertion sort takes: " + (System.nanoTime() - startTime)/1000000000.0 + " Seconds for n = " + num.unsorted.size() + "  and k = " + k );
+		
+		long startTimeB = System.nanoTime();
+		sort.sortBinsertion(num, k);
+		System.out.println("bInsertion sort takes: " + (System.nanoTime() - startTimeB)/1000000000.0 + " Seconds for n = " + num.unsorted.size() + "  and k = " + k );
+		
 	}
 
 }
