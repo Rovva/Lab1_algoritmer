@@ -15,7 +15,7 @@ public class NumberGenerator {
 		showNumbers();
 	}
 	
-	void GenerateNumbers() {  // Creates a list of random numbers from 0-99
+	void GenerateNumbers() {  // Creates a list of random numbers from 0 to n-1
 		int randomNumber;
 		Random randomGenerator = new Random();
 		for(int i = 0; i < this.num; i++) {				

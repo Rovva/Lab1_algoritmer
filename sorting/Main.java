@@ -3,45 +3,49 @@ package sorting;
 import java.util.Arrays;
 
 import sorting.NumberGenerator;
-import sorting.Sorter2;
+import sorting.Sorter;
 
 
 public class Main {
 
 	NumberGenerator num;
-	Sorter2 sort;
+	Sorter sort;
 	
 	public static void main(String[] args) {
-		for(int i = 8; i <= 20; i = i + 2) {
-			startSort(5000, i);
-			startSort(5000, i);
+		/*
+		 * In this for loop we append the k value by 2 and compare with increasing n
+		 * we run the code twice to get the average time.
+		 */
+		for(int k = 2; k <= 20; k = k + 2) {
+			startSort(5000, k);
+			startSort(5000, k);
 			System.out.println("---");
-			startSort(10000, i);
-			startSort(10000, i);
+			startSort(10000, k);
+			startSort(10000, k);
 			System.out.println("---");
-			startSort(15000, i);
-			startSort(15000, i);
+			startSort(15000, k);
+			startSort(15000, k);
 			System.out.println("---");
-			startSort(20000, i);
-			startSort(20000, i);
+			startSort(20000, k);
+			startSort(20000, k);
 			System.out.println("---");
-			startSort(25000, i);
-			startSort(25000, i);
+			startSort(25000, k);
+			startSort(25000, k);
 			System.out.println("---");
-			startSort(30000, i);
-			startSort(30000, i);
+			startSort(30000, k);
+			startSort(30000, k);
 			System.out.println("---");
-			startSort(35000, i);
-			startSort(35000, i);
+			startSort(35000, k);
+			startSort(35000, k);
 			System.out.println("---");
-			startSort(40000, i);
-			startSort(40000, i);
+			startSort(40000, k);
+			startSort(40000, k);
 			System.out.println("---");
-			startSort(45000, i);
-			startSort(45000, i);
+			startSort(45000, k);
+			startSort(45000, k);
 			System.out.println("---");
-			startSort(50000, i);
-			startSort(50000, i);
+			startSort(50000, k);
+			startSort(50000, k);
 			System.out.println("---");
 		}
 	}
@@ -51,20 +55,20 @@ public class Main {
 		int k = kvalue;
 		long time;
 		NumberGenerator num = new NumberGenerator(n);
-		Sorter2 sort = new Sorter2();
+		Sorter sort = new Sorter();
 		
 		
 		long startTime = System.nanoTime();
 		sort.sortInsertion(num, k);
 		time = (long) ((System.nanoTime() - startTime)/100000.0);
 		System.out.println("Insert: n, k, t: " + n + "," + k + "," + time);
-		//System.out.println("Insertion sort takes: " + (System.nanoTime() - startTime)/1000000.0 + " Milliseconds for n = " + num.unsorted.size() + "  and k = " + k );
+		
 		
 		long startTimeB = System.nanoTime();
 		sort.sortBinsertion(num, k);
 		time = (long) ((System.nanoTime() - startTimeB)/100000.0);
 		System.out.println("bInsert: n, k, t: " + n + "," + k + "," + time);
-		//System.out.println("bInsertion sort takes: " + (System.nanoTime() - startTimeB)/1000000.0 + " Milliseconds for n = " + num.unsorted.size() + "  and k = " + k );
+		
 		
 	}
 
