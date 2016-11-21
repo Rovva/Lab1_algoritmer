@@ -92,7 +92,7 @@ public class Main {
 		sort.sortBinsertion(num, k);
 		testB += (long) ((System.nanoTime() - startTimeB)/100000.0);
 		testB = testB / 5;
-		System.out.println("bInsert: n, k, t: " + n + "," + k + "," + timeB);
+		System.out.println("bInsert: n, k, t: " + n + "," + k + "," + testB);
 		
 	}
 
