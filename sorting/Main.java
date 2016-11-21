@@ -49,21 +49,57 @@ public class Main {
 	public static void startSort(int numbers, int kvalue) {
 		int n = numbers;
 		int k = kvalue;
-		long time;
+		long time, timeB;
+		long test, testB;
 		NumberGenerator num = new NumberGenerator(n);
 		Sorter2 sort = new Sorter2();
 		
-		
+
 		long startTime = System.nanoTime();
 		sort.sortInsertion(num, k);
 		time = (long) ((System.nanoTime() - startTime)/100000.0);
-		System.out.println("Insert: n, k, t: " + n + "," + k + "," + time);
+		test = time;
+		startTime = System.nanoTime();
+		sort.sortInsertion(num, k);
+		time = (long) ((System.nanoTime() - startTime)/100000.0);
+		test += time;
+		startTime = System.nanoTime();
+		sort.sortInsertion(num, k);
+		time = (long) ((System.nanoTime() - startTime)/100000.0);
+		test += time;
+		startTime = System.nanoTime();
+		sort.sortInsertion(num, k);
+		time = (long) ((System.nanoTime() - startTime)/100000.0);
+		test += time;
+		test = test / 5;
+		System.out.println("Insert: n, k, t: " + n + "," + k + "," + test);
 		//System.out.println("Insertion sort takes: " + (System.nanoTime() - startTime)/1000000.0 + " Milliseconds for n = " + num.unsorted.size() + "  and k = " + k );
 		
 		long startTimeB = System.nanoTime();
 		sort.sortBinsertion(num, k);
-		time = (long) ((System.nanoTime() - startTimeB)/100000.0);
-		System.out.println("bInsert: n, k, t: " + n + "," + k + "," + time);
+		timeB = (long) ((System.nanoTime() - startTimeB)/100000.0);
+		testB = timeB;
+		startTimeB = System.nanoTime();
+		sort.sortBinsertion(num, k);
+		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
+
+		startTimeB = System.nanoTime();
+		sort.sortBinsertion(num, k);
+		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
+
+		startTimeB = System.nanoTime();
+		sort.sortBinsertion(num, k);
+		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
+
+		startTimeB = System.nanoTime();
+		sort.sortBinsertion(num, k);
+		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
+
+		startTimeB = System.nanoTime();
+		sort.sortBinsertion(num, k);
+		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
+		timeB = timeB / 5;
+		System.out.println("bInsert: n, k, t: " + n + "," + k + "," + timeB);
 		//System.out.println("bInsertion sort takes: " + (System.nanoTime() - startTimeB)/1000000.0 + " Milliseconds for n = " + num.unsorted.size() + "  and k = " + k );
 		
 	}
