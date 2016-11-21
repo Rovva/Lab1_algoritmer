@@ -65,6 +65,9 @@ public class Main {
 		sort.sortInsertion(num, k);
 		time = (long) ((System.nanoTime() - startTime)/100000.0);
 		test += time;
+		sort.sortInsertion(num, k);
+		time = (long) ((System.nanoTime() - startTime)/100000.0);
+		test += time;
 		test = test / 5;
 		System.out.println("Insert: n, k, t: " + n + "," + k + "," + test);
 		//System.out.println("Insertion sort takes: " + (System.nanoTime() - startTime)/1000000.0 + " Milliseconds for n = " + num.unsorted.size() + "  and k = " + k );
@@ -75,31 +78,21 @@ public class Main {
 		testB = timeB;
 		startTimeB = System.nanoTime();
 		sort.sortBinsertion(num, k);
-		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
+		testB += (long) ((System.nanoTime() - startTimeB)/100000.0);
 
 		startTimeB = System.nanoTime();
 		sort.sortBinsertion(num, k);
-		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
+		testB += (long) ((System.nanoTime() - startTimeB)/100000.0);
 
 		startTimeB = System.nanoTime();
 		sort.sortBinsertion(num, k);
-		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
-
+		testB += (long) ((System.nanoTime() - startTimeB)/100000.0);
+		
 		startTimeB = System.nanoTime();
 		sort.sortBinsertion(num, k);
-		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
-
-		startTimeB = System.nanoTime();
-		sort.sortBinsertion(num, k);
-		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
-		timeB = timeB / 5;
+		testB += (long) ((System.nanoTime() - startTimeB)/100000.0);
+		testB = testB / 5;
 		System.out.println("bInsert: n, k, t: " + n + "," + k + "," + timeB);
-		
-		
-		startTimeB = System.nanoTime();
-		sort.sortBinsertion(num, k);
-		time = (long) ((System.nanoTime() - startTimeB)/100000.0);
-		System.out.println("bInsert: n, k, t: " + n + "," + k + "," + time);
 		
 	}
 
