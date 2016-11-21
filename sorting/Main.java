@@ -18,33 +18,23 @@ public class Main {
 		 */
 		for(int k = 2; k <= 20; k = k + 2) {
 			startSort(5000, k);
-			startSort(5000, k);
 			System.out.println("---");
-			startSort(10000, k);
 			startSort(10000, k);
 			System.out.println("---");
 			startSort(15000, k);
-			startSort(15000, k);
 			System.out.println("---");
-			startSort(20000, k);
 			startSort(20000, k);
 			System.out.println("---");
 			startSort(25000, k);
-			startSort(25000, k);
 			System.out.println("---");
-			startSort(30000, k);
 			startSort(30000, k);
 			System.out.println("---");
 			startSort(35000, k);
-			startSort(35000, k);
 			System.out.println("---");
-			startSort(40000, k);
 			startSort(40000, k);
 			System.out.println("---");
 			startSort(45000, k);
-			startSort(45000, k);
 			System.out.println("---");
-			startSort(50000, k);
 			startSort(50000, k);
 			System.out.println("---");
 		}
@@ -62,7 +52,6 @@ public class Main {
 		long startTime = System.nanoTime();
 		sort.sortInsertion(num, k);
 		time = (long) ((System.nanoTime() - startTime)/100000.0);
-<<<<<<< HEAD
 		test = time;
 		startTime = System.nanoTime();
 		sort.sortInsertion(num, k);
@@ -105,17 +94,12 @@ public class Main {
 		timeB += (long) ((System.nanoTime() - startTimeB)/100000.0);
 		timeB = timeB / 5;
 		System.out.println("bInsert: n, k, t: " + n + "," + k + "," + timeB);
-		//System.out.println("bInsertion sort takes: " + (System.nanoTime() - startTimeB)/1000000.0 + " Milliseconds for n = " + num.unsorted.size() + "  and k = " + k );
-=======
-		System.out.println("Insert: n, k, t: " + n + "," + k + "," + time);
 		
 		
-		long startTimeB = System.nanoTime();
+		startTimeB = System.nanoTime();
 		sort.sortBinsertion(num, k);
 		time = (long) ((System.nanoTime() - startTimeB)/100000.0);
 		System.out.println("bInsert: n, k, t: " + n + "," + k + "," + time);
-		
->>>>>>> origin/master
 		
 	}
 
